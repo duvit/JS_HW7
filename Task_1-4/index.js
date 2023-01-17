@@ -87,9 +87,3 @@ const getEyeColorMap = () => {
 };
 
 // console.log(getEyeColorMap());
-// {
-//    grey:  [Candidate, Candidate, Candidate, Candidate ...],
-//    blue:  [Candidate, Candidate, Candidate, ...],
-//    green: [Candidate, Candidate, Candidate, Candidate, Candidate ...]
-//    ... etc.
-// }
