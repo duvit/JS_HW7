@@ -40,13 +40,19 @@ const getCandidateById = (id) => {
 const sortCandidatesArr = (sortBy) => {
   const candidatesArr = [...candidateArr];
 
-  const sign = sortBy === "asc" ? 1 : -1;
+  let sign;
 
-  if (sortBy === undefined) return candidatesArr;
+  if (sortBy === "asc") {
+    sign = 1;
+  } else if (sortBy === "desc") {
+    sign = -1;
+  } else if (sortBy === undefined) {
+    return candidatesArr;
+  }
 
   candidatesArr.sort((a, b) => {
     if (a.balance > b.balance) {
-      return sign;
+      return sign * 1;
     } else if (a.balance < b.balance) {
       return sign * -1;
     } else if (a.balance === b.balance) {
@@ -57,9 +63,9 @@ const sortCandidatesArr = (sortBy) => {
   return candidatesArr;
 };
 
-// console.log(sortCandidatesArr("asc"));
-// console.log(sortCandidatesArr("desc"));
-// console.log(sortCandidatesArr());
+console.log(sortCandidatesArr("asc"));
+console.log(sortCandidatesArr("desc"));
+console.log(sortCandidatesArr());
 
 //4. Написать функцию, которая вернет объект в котором название ключей будут цвета глаз,
 //а значением - массив с кандидатами имеющие такой цвет глаз.
