@@ -40,21 +40,19 @@ const getCandidateById = (id) => {
 const sortCandidatesArr = (sortBy) => {
   const candidatesArr = [...candidateArr];
 
-  if (sortBy === "desc") {
-    candidatesArr.sort((a, b) => {
-      if (a.balance > b.balance) {
-        return -1;
-      }
-    });
-  } else if (sortBy === "asc") {
-    candidatesArr.sort((a, b) => {
-      if (a.balance < b.balance) {
-        return -1;
-      }
-    });
-  } else {
-    return candidatesArr;
-  }
+  const sign = sortBy === "asc" ? 1 : -1;
+
+  if (sortBy === undefined) return candidatesArr;
+
+  candidatesArr.sort((a, b) => {
+    if (a.balance > b.balance) {
+      return sign;
+    } else if (a.balance < b.balance) {
+      return sign * -1;
+    } else if (a.balance === b.balance) {
+      return 0;
+    }
+  });
 
   return candidatesArr;
 };
